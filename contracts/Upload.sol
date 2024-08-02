@@ -31,6 +31,7 @@ contract Upload {
       }
     
   }
+  
   function disallow(address user) public{
       ownership[msg.sender][user]=false;
       for(uint i=0;i<accessList[msg.sender].length;i++){
