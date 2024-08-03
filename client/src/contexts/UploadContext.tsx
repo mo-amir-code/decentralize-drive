@@ -5,7 +5,7 @@ import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";
 
 interface UploadContextType {
     account: string | null,
-    contract: string | null,
+    contract: any,
     provider: any,
     isModalOpen: boolean
 }
@@ -30,6 +30,15 @@ const UploadContextProvider = ({children}:{children: ReactNode}) => {
 
     const loadProvider = async (provider:any) => {
         try {
+
+            window.ethereum.on("chainChanged", () => {
+                window.location.reload();
+            })
+
+            window.ethereum.on("accountsChanged", () => {
+                window.location.reload();
+            })
+
             await provider.send("eth_requestAccounts", []);
             const signer = await provider.getSigner();
             const address = await signer.getAddress();
