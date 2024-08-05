@@ -32,7 +32,7 @@ const FileUpload = ({
           },
         });
 
-        const imgHash = `ipfs://${resFile?.data?.ipfsHash}`;
+        const imgHash = `ipfs://${resFile?.data?.IpfsHash}`;
 
         await contract.add(account, imgHash);
         alert("Image Uploaded");
